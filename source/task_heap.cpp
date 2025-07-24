@@ -81,4 +81,9 @@ struct TaskMinHeap
                  << ", priority: " << t.priority;
         }
     }
+
+    bool empty()
+    {
+         return tasks.empty();
+    }
 };

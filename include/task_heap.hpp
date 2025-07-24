@@ -17,6 +17,7 @@ struct TaskMinHeap
     void insertTask(const Task& Task);
     Task getNextTask();
     void showTasks() const;
+    bool empty();
 };
 
 #endif 
