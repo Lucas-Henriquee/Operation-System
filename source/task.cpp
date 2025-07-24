@@ -1,3 +1,5 @@
+#include <cstdlib> 
+#include <ctime>   
 #include "../include/task.hpp"
 
 Task createTask(int id, float gt, float xt ,int p)
@@ -13,11 +15,14 @@ Task createTask(int id, float gt, float xt ,int p)
 vector<Task> generateTasks(int n, float max_time)
 {
     vector<Task> task_list;
+    srand(time(nullptr));  
+
     for(int i=0; i<n; i++)
     {
-        task_list.push_back(createTask(i,i,max_time,1));  //implementar geração aleatória de tasks em um intervalo de tempo
+        int priority = rand() % 10 + 1;      
+        float exec_time = static_cast<float>(rand() % static_cast<int>(max_time) + 1);                
+        task_list.push_back(createTask(i,i,exec_time, priority));  
     }
+    
     return task_list;
 }
-
-//
