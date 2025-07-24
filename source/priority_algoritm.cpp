@@ -6,7 +6,7 @@ float current_time = 0;
 void run_priority_algorithm(float time_window)
 {
     //gerar tarefas
-    //while true
+    //while heap nao vazia
         //executar e remover tarefa da heap
     vector<Task>task_list = generateTasks(10, time_window);
 
@@ -22,7 +22,7 @@ void run_priority_algorithm(float time_window)
         Task task_minimo=task_heap.getNextTask();
 
         cout << "Tarefa executada ID: " << task_minimo.id
-             << " | prioridade (tickets): " << task_minimo.priority
+             << " | prioridade : " << task_minimo.priority
              << " | tempo_exec: " << task_minimo.execution_time
              << " | tempo atual: " << current_time << endl;
         current_time++;
