@@ -1,18 +1,17 @@
 #include "../include/task_heap.hpp"
 
-
-// Struct que implementa uma Heap Mínima
-struct TaskMinHeap 
-{
-    vector<Task> tasks;
-    
     // Funções auxiliares para navegar na heap
-    int parent(int i) { return (i - 1) / 2; }
-    int left_children(int i) { return 2 * i + 1; }
-    int right_children(int i) { return 2 * i + 2; }
+    int TaskMinHeap :: parent(int i) 
+    { return (i - 1) / 2; }
+
+    int TaskMinHeap :: left_children(int i) 
+    { return 2 * i + 1; }
+
+    int TaskMinHeap :: right_children(int i) 
+    { return 2 * i + 2; }
     
     // Restaurar a propriedade de heap subindo
-    void heapUp(int i) 
+    void TaskMinHeap :: heapUp(int i) 
     {
         while (i > 0 && tasks[parent(i)].priority > tasks[i].priority) 
         {
@@ -22,7 +21,7 @@ struct TaskMinHeap
     }
     
     // Restaurar a propriedade de heap descendo
-    void heapDown(int i) 
+    void TaskMinHeap :: heapDown(int i) 
     {
         int min_value = i;
         int left = left_children(i);
@@ -45,15 +44,15 @@ struct TaskMinHeap
         }
     }
 
-    // insertTask novo elemento
-    void insertTask(const Task& Task) 
+    // Inserir task na heap
+    void TaskMinHeap :: insertTask(const Task& Task) 
     {
         tasks.push_back(Task);
         heapUp(tasks.size() - 1);
     }
     
-    // Remover e retornar o elemento com min_value priority (topo)
-    Task getNextTask() 
+    // Remover e retornar o elemento com maior prioridade (topo)
+    Task TaskMinHeap :: getNextTask() 
     {
         if (tasks.empty()) 
         {
@@ -72,8 +71,8 @@ struct TaskMinHeap
         return minimo;
     }
     
-    // Mostrar todos os tasks (para debug)
-    void showTasks() const 
+    //Mostrar todos os tasks (para debug)
+    void TaskMinHeap :: showTasks() const 
     {
         for (const auto& t : tasks) 
         {
@@ -82,8 +81,7 @@ struct TaskMinHeap
         }
     }
 
-    bool empty()
+    bool TaskMinHeap :: empty()
     {
          return tasks.empty();
     }
-};

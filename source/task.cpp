@@ -19,9 +19,11 @@ vector<Task> generateTasks(int n, float max_time)
 
     for(int i=0; i<n; i++)
     {
-        int priority = rand() % 10 + 1;      
-        float exec_time = static_cast<float>(rand() % static_cast<int>(max_time) + 1);                
-        task_list.push_back(createTask(i,i,exec_time, priority));  
+        int id=i;
+        float exec_time = static_cast<float>(rand() % static_cast<int>(max_time) + 1);
+        float generation_time = static_cast<float>(rand() % static_cast<int>(max_time - exec_time) + 1);
+        int priority = rand() % 10 + 1;
+        task_list.push_back(createTask(id, generation_time, exec_time, priority));
     }
     
     return task_list;
