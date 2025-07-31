@@ -5,14 +5,14 @@
 
 struct Task
 {
-    int id;
+    size_t id;
     float generation_time;
     float execution_time;
-    int priority;
+    size_t priority;
 };
 
-Task createTask(int id, float gt, float xt ,int p);
-vector<Task> generateTasks(int n, float max_time);
+Task createTask(size_t id, float gt, float xt ,size_t p);
+vector<Task> generateTasks(size_t n, float max_time);
 
 
 #endif // TASK_HPP

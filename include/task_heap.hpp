@@ -8,12 +8,12 @@ struct TaskMinHeap
 {
     vector<Task> tasks;
 
-    int parent(int i);
-    int left_children(int i);
-    int right_children(int i);
+    size_t parent(size_t i);
+    size_t left_children(size_t i);
+    size_t right_children(size_t i);
     
-    void heapUp(int i);
-    void heapDown(int i);
+    void heapUp(size_t i);
+    void heapDown(size_t i);
     void insertTask(const Task& Task);
     Task getNextTask();
     void showTasks() const;

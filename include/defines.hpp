@@ -19,6 +19,7 @@
 #include <random>     /* implementação de funções de geração de números aleatórios */
 #include <unistd.h>   /* implementação de funções de manipulação de diretórios */
 #include <chrono>     /* implementação de funções de medição de tempo */
+#include <string>     /* manipulação de strings */
 
 using namespace std;
 
