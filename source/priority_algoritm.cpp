@@ -10,15 +10,15 @@ void run_priority_algorithm(float time_window, vector<Task> &task_list)
 
     cout << "\n=== ALGORITMO DE PRIORIDADE ===\n";
 
+    // Cria heap de mínimo para selecionar maior prioridade em O(1)
+    TaskMinHeap task_heap;
+
+    // Vetor para armazenar tarefas prontas
+    vector<Task> ready_tasks;
+
     // Enquanto tempo limite não atingido
-    while (!task_list.empty() && current_time <= time_window)
+    while ((!task_list.empty()  && !task_heap.empty() ) || current_time <= time_window )
     {
-        // Cria heap de mínimo para selecionar maior prioridade em O(1)
-        TaskMinHeap task_heap;
-
-        // Vetor para armazenar tarefas prontas
-        vector<Task> ready_tasks;
-
         // Insere na heap as tarefas com tempo de aparecimento
         // menor que tempo atual e exclui da lista
         for (size_t i = 0; i < task_list.size();)
