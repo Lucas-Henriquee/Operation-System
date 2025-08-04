@@ -8,11 +8,11 @@ void run_lottery_algorithm(float time_window, vector<Task> &tasks)
     float current_time = 0;
 
     cout << "\n=== ALGORITMO DE LOTERIA ===\n";
-
+    
     while (!tasks.empty() && current_time < time_window)
     {
-        // Selecionar apenas tarefas que já chegaram
         vector<size_t> ready_indices;
+        // Limpa e reconstrói a lista de tarefas prontas a cada iteração
         for (size_t i = 0; i < tasks.size(); ++i)
         {
             if (tasks[i].generation_time <= current_time)
@@ -21,9 +21,19 @@ void run_lottery_algorithm(float time_window, vector<Task> &tasks)
 
         if (ready_indices.empty())
         {
-            // Avança o tempo caso nenhuma tarefa esteja disponível
-            current_time += 1.0;
-            continue;
+            float next_generation_time = time_window;
+            // Encontra o tempo de geração da próxima tarefa
+            for (const Task &t : tasks)
+            {
+                if (t.generation_time < next_generation_time)
+                    next_generation_time = t.generation_time;
+            }
+            // Avança o tempo para o momento da chegada da próxima tarefa, se necessário
+            if(next_generation_time > current_time)
+            {
+                current_time = next_generation_time;
+            }
+            continue; 
         }
 
         cout << "\nTarefas prontas no tempo " << current_time << ":\n";
