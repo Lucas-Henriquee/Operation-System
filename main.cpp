@@ -7,7 +7,7 @@
 
 int main()
 {
-    int seed = 42;
+    int seed = 1024;
     srand(seed); 
     
     init_log_file(); 

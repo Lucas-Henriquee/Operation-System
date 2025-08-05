@@ -9,10 +9,14 @@ void run_lottery_algorithm(float time_window, vector<Task> &tasks)
 
     cout << "\n=== ALGORITMO DE LOTERIA ===\n";
     
+    vector<size_t> ready_indices;
+    
     while (!tasks.empty() && current_time < time_window)
     {
-        vector<size_t> ready_indices;
-        // Limpa e reconstrói a lista de tarefas prontas a cada iteração
+        // Limpa tarefas prontas a cada iteração
+        ready_indices.clear();
+
+        // Reconstrói a lista de tarefas prontas a cada iteração
         for (size_t i = 0; i < tasks.size(); ++i)
         {
             if (tasks[i].generation_time <= current_time)
@@ -50,7 +54,9 @@ void run_lottery_algorithm(float time_window, vector<Task> &tasks)
         vector<size_t> ticket_pool;
         for (size_t idx : ready_indices)
         {
-            for (size_t j = 0; j < tasks[idx].priority; ++j)
+            size_t num_tickets = 11 - tasks[idx].priority;
+                        
+            for (size_t j = 0; j < num_tickets; ++j)
                 ticket_pool.push_back(idx);
         }
 

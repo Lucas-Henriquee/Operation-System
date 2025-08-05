@@ -15,10 +15,12 @@ void run_priority_algorithm(float time_window, vector<Task> &task_list)
 
     // Vetor para armazenar tarefas prontas
     vector<Task> ready_tasks;
-
+    
     // Enquanto tempo limite não atingido
-    while ((!task_list.empty()  && !task_heap.empty() ) || current_time <= time_window )
-    {
+    do 
+    {   
+        ready_tasks.clear(); // Limpa tarefas prontas a cada iteração
+        
         // Insere na heap as tarefas com tempo de aparecimento
         // menor que tempo atual e exclui da lista
         for (size_t i = 0; i < task_list.size();)
@@ -74,5 +76,5 @@ void run_priority_algorithm(float time_window, vector<Task> &task_list)
 
         // Atualiza tempo atual
         current_time = end_time;
-    }
+    } while ((!task_list.empty()  || !task_heap.empty() ) && current_time <= time_window );
 }
